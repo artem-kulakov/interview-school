@@ -22,8 +22,6 @@
         <td><%= section.end_time.strftime('%d %b %Y, %H:%M') %></td>
         <td><%= section.teacher.first_and_last_name %></td>
         <td><%= section.classroom.name %></td>
-        <td><%= link_to 'Show', section %></td>
-        <td><%= link_to 'Edit', edit_section_path(section) %></td>
         <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
