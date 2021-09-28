@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_01_133348) do
+ActiveRecord::Schema.define(version: 2021_09_01_172205) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name", null: false
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_09_01_133348) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
     t.string "schedule", null: false
     t.integer "subject_id", null: false
     t.integer "teacher_id", null: false
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2021_09_01_133348) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["classroom_id"], name: "index_sections_on_classroom_id"
+    t.index ["end_time"], name: "index_sections_on_end_time"
+    t.index ["schedule", "start_time", "end_time"], name: "index_sections_on_schedule_and_start_time_and_end_time"
+    t.index ["start_time"], name: "index_sections_on_start_time"
     t.index ["subject_id"], name: "index_sections_on_subject_id"
     t.index ["teacher_id"], name: "index_sections_on_teacher_id"
   end
